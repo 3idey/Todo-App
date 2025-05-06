@@ -12,7 +12,7 @@
             <ul class="flex space-x-6">
                 <li><x-link link="/">Home</x-link>
                 </li>
-                <li><x-link link="#">Todo's</x-link>
+                <li><x-link link="/todos">Todo's</x-link>
                 </li>
                 <li><x-link link="/about">About</x-link>
                 </li>

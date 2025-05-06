@@ -18,7 +18,7 @@
             Login
         </button>
         <p class="text-sm text-center mt-4">
-            Don't Have An Account ? <a href="/register" class="text-blue-400 hover:underline">Register</a>
+            Don't have an account? <a href="/register" class="text-blue-400 hover:underline">Register</a>
         </p>
     </form>
 </body>
