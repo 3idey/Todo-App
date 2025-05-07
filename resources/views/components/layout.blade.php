@@ -28,7 +28,7 @@
             @endguest
             @auth
                 <div class="flex items-center space-x-4 ml-4">
-                    <a href="#"
+                    <a href="{{ route('profile.show') }}"
                         class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500 transition-colors duration-400 ease-in-out">Profile</a>
                     <form method="POST" action="/logout">
                         @csrf
@@ -44,11 +44,7 @@
     <div class="container mx-auto mt-8">
         {{ $slot }}
     </div>
-    <footer class="bg-gray-800 text-gray-100 p-4 mt-8">
-        <div class="container mx-auto text-center">
-            &copy; 2025 Your Todo App. All rights reserved.
-        </div>
-    </footer>
+
 </body>
 
 <footer />

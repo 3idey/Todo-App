@@ -11,12 +11,14 @@
 
         <div class="mb-4">
             <label for="name" class="block mb-1">Name</label>
-            <input type="text" name="name" required class="w-full p-2 rounded bg-gray-700 text-gray-100">
+            <input type="text" name="name" value="{{ old('name') }}" required
+                class="w-full p-2 rounded bg-gray-700 text-gray-100">
         </div>
 
         <div class="mb-4">
             <label for="email" class="block mb-1">Email</label>
-            <input type="email" name="email" required class="w-full p-2 rounded bg-gray-700 text-gray-100">
+            <input type="email" name="email" value="{{ old('email') }}" required
+                class="w-full p-2 rounded bg-gray-700 text-gray-100">
         </div>
 
         <div class="mb-4">
