@@ -13,9 +13,7 @@ class TodosController extends Controller
         // Fetch all todos for the authenticated user
         $todos = \App\Models\Todos::where('user_id', Auth::user()->id)->get();
         // Pass the todos to the view
-        return view('todos.index', ['todos' => $todos]);
-
-        return view('todos.index');
+        return view('todos.index', compact('todos'));
     }
 
     public function create()
@@ -40,13 +38,28 @@ class TodosController extends Controller
 
     public function edit($id)
     {
-        return view('todos.edit', ['id' => $id]);
+        $todo = \App\Models\Todos::find($id);
+        if (!$todo) {
+            return redirect('/todos')->with('error', 'Todo not found');
+        }
+        // Check if the authenticated user is the owner of the todo
+        if ($todo->user_id !== Auth::user()->id) {
+            return redirect('/todos')->with('error', 'Unauthorized access');
+        }
+        // Pass the todo to the view
+        return view('todos.update', compact('todo'));
     }
 
     public function update(Request $request, $id)
     {
-        // Validate and update the todo
-        // Redirect to the index page
+        $todo = \App\Models\Todos::find($id);
+        if (!$todo) {
+            abort(404, 'Todo not found');
+        }
+        $todo->update($request->validate([
+            'description' => 'required|max:255',
+        ]));
+        return redirect('/todos');
     }
 
     public function destroy($id)

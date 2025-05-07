@@ -8,7 +8,8 @@
 
     <div class="grid grid-rows-3 gap-5 horizontal-scroll ">
         @foreach ($todos as $todo)
-            <x-todo updated_at="{{ \Carbon\Carbon::parse($todo['updated_at'])->format('Y-m-d H:i:s') }}"
+            <x-todo id_todo="{{ $todo->id }}"
+                updated_at="{{ \Carbon\Carbon::parse($todo['updated_at'])->format('Y-m-d H:i:s') }}"
                 created_at="{{ \Carbon\Carbon::parse($todo['created_at'])->format('Y-m-d H:i:s') }}">
                 {{ $todo['description'] }}
             </x-todo>
