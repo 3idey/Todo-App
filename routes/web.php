@@ -10,9 +10,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/about', function () {
-    return view('about');
-});
 
 Route::get('/login', [LoginController::class, 'create'])->middleware('guest');
 Route::post('/login', [LoginController::class, 'store'])->middleware('guest');
@@ -39,4 +36,5 @@ Route::post('/todos', [TodosController::class, 'store'])->middleware('auth');
 Route::get('/todos/{todo}', [TodosController::class, 'show'])->middleware('auth');
 Route::get('/todos/{todo}/edit', [TodosController::class, 'edit'])->middleware('auth')->name('todos.edit');
 Route::put('/todos/{todo}', [TodosController::class, 'update'])->middleware('auth')->name('todos.update');
+Route::match(['put', 'patch'], '/todos/{todo}/statues', [TodosController::class, 'updateStatues'])->name('todos.updatestatues');
 Route::delete('/todos/{todo}', [TodosController::class, 'destroy'])->middleware('auth')->name('todos.destroy');

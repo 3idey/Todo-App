@@ -14,8 +14,6 @@
                 </li>
                 <li><x-link link="/todos">Todo's</x-link>
                 </li>
-                <li><x-link link="/about">About</x-link>
-                </li>
             </ul>
 
             @guest

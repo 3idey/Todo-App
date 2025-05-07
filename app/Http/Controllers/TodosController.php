@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Todos;
 
 class TodosController extends Controller
 {
+    protected $casts = [
+        'completed' => 'boolean',
+    ];
     public function index()
 
     {
@@ -61,10 +65,20 @@ class TodosController extends Controller
         ]));
         return redirect('/todos');
     }
+    public function updateStatues(Request $request, $id)
+    {
+        $todo = Todos::findOrFail($id);
+
+        $todo->completed = $request->has('completed') ? $request->completed : 0;
+        $todo->save();
+
+        return back();
+    }
+
 
     public function destroy($id)
     {
-        // Find the todo by ID and delete it
+
         $todo = \App\Models\Todos::find($id);
         if ($todo) {
             $todo->delete();
